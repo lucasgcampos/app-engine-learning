@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +10,16 @@
 
     <title>Discipular</title>
 
+    <!--
+     Fontawesome - http://fontawesome.io/
+     Fornece acesso aos ícones da aplicação
+     -->
     <link rel="stylesheet"  href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
 
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
@@ -34,7 +35,6 @@
                 <a class="navbar-brand" href="#">Discipular</a>
             </div>
 
-            <!-- Single button -->
             <div class="btn-group pull-right" style="margin-top:8px;">
                 <button type="button" class="btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown">
                     Menu <span class="caret"></span>
@@ -46,7 +46,6 @@
                     <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
                 </ul>
             </div>
-
         </div>
     </div>
 
@@ -60,10 +59,72 @@
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Dashboard</h1>
+                <h1 class="page-header">Dashboard - Gráficos de Teste</h1>
+                <div class="canvas-holder">
+                   <canvas id="myChart" width="640" height="400"></canvas>
+                   <canvas id="pie" width="300" height="400"></canvas>
+                </div>
             </div>
         </div>
     </div>
+
+    <!--
+    Chart.js - http://www.chartjs.org/
+    Fornece templates de gráficos
+    -->
+    <script src="http://www.chartjs.org/assets/Chart.min.js"></script>
+    <script>
+        var dataLine = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                }
+            ]
+        };
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myNewChart = new Chart(ctx).Line(dataLine);
+
+        var dataPie = [
+            {
+                value: 300,
+                color:"#F7464A",
+                highlight: "#FF5A5E",
+                label: "Red"
+            },
+            {
+                value: 50,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Green"
+            },
+            {
+                value: 100,
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "Yellow"
+            }
+        ]
+        var ctx = document.getElementById("pie").getContext("2d");
+        var myPie = new Chart(ctx).Pie(dataPie);
+    </script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
