@@ -17,17 +17,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}Tekton Fullstrack{% endblock %}</title>
+    <title>{% block title %}Discipular{% endblock %}</title>
     <!-- Bootstrap -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/default.css" rel="stylesheet">
+    <link rel="icon" href="/static/img/logo-discipular.png">
+
     <style>
         .pad8 {
             margin: 8px 15px;
             color: #777
         }
     </style>
-    <link rel="stylesheet"  href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
@@ -80,24 +82,25 @@
         </div>
     </div>
 </div>
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/   "><i class="fa fa-home"></i> Dashboard</a></li>
-                <li><a href="/usuarios/admin"><i class="fa fa-child"></i> Usuários</a></li>
-                <li><a href="/celulas/admin"><i class="fa fa-users"></i> Células</a></li>
-                <li><a href="/areas/admin"><i class="fa fa-sitemap"></i> Áreas</a></li>
-                <li><a href="/tekton"><i class="fa fa-cog"></i> Tekton</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            {% block body %}{% endblock %}
-        </div>
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="/   "><i class="fa fa-home"></i> Dashboard</a></li>
+            <li><a href="/usuarios/admin"><i class="fa fa-child"></i> Usuários</a></li>
+            <li><a href="/celulas/admin"><i class="fa fa-users"></i> Células</a></li>
+            <li><a href="/areas/admin"><i class="fa fa-sitemap"></i> Áreas</a></li>
+            <li><a href="/tekton"><i class="fa fa-cog"></i> Tekton</a></li>
+        </ul>
     </div>
-
-<div class="footer">
-    <div class="container">
-        <p class="text-muted text-right">Tekton Full-Stack: <a target="_blank" href="https://github.com/renzon/tekton-fullstack">Git Hub</a></p>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="footer" style="padding-right: 10px; margin-left:20px;">
+            <p class="text-muted text-right">Tekton Full-Stack: <a target="_blank" href="https://github.com/renzon/tekton-fullstack">Git Hub</a></p>
+        </div>
     </div>
 </div>
 </body>
