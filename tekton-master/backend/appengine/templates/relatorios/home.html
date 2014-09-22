@@ -1,0 +1,45 @@
+{% extends 'layout/padrao.html' %}
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{% trans %}Relatórios {% endtrans %}  </h1>
+                {% if _logged_user and ('ADMIN' in _logged_user.groups) %}
+                    <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>
+                {% endif %}
+                <hr/>
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title">{% trans %}<i class="fa fa-list"></i>  Lista of Membros{% endtrans %}</div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>{% trans %}Participacao{% endtrans %}</th>
+                                <th>{% trans %}Geral{% endtrans %}</th>
+                                <th>{% trans %}Observacao{% endtrans %}</th>
+                                <th>{% trans %}Horario{% endtrans %}</th>
+                                <th>{% trans %}Tema{% endtrans %}</th>
+                                <th>{% trans %}Conteudo{% endtrans %}</th>
+                                <th>{% trans %}Data{% endtrans %}</th>
+                                <th>{% trans %}Cincoes{% endtrans %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for relatorio in relatorios %}
+                                <tr>
+                                    <td>{{ relatorio.participacao }}</td>
+                                    <td>{{ relatorio.geral }}</td>
+                                    <td>{{ relatorio.observacao }}</td>
+                                    <td>{{ relatorio.horario }}</td>
+                                    <td>{{ relatorio.tema }}</td>
+                                    <td>{{ relatorio.conteudo }}</td>
+                                    <td>{{ relatorio.data }}</td>
+                                    <td>{{ relatorio.cincoes }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

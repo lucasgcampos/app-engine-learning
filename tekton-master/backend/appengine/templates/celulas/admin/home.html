@@ -16,6 +16,7 @@
                         <th>{% trans %}Nome{% endtrans %}</th>
                         <th>{% trans %}Data{% endtrans %}</th>
                         <th>{% trans %}Area{% endtrans %}</th>
+                        <th>{% trans %}Endereço{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,7 @@
                             <td>{{ celula.nome }}</td>
                             <td>{{ celula.data }}</td>
                             <td>{{ celula.area }}</td>
+                            <td>{{ celula.endereco }}</td>
                             <td>
                                 <form action="{{ celula.delete_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
                                     {{ csrf_input() }}
