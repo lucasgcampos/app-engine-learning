@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from gaebusiness.gaeutil import SaveCommand, ModelSearchCommand
 from gaeforms.ndb.form import ModelForm
 from gaegraph.business_base import UpdateNode, CreateSingleArc
-from membro_app.model import Membro, MembroLider
+from membro_app.model import Membro
 
 
 class MembroPublicForm(ModelForm):
@@ -13,7 +13,8 @@ class MembroPublicForm(ModelForm):
     _model_class = Membro
     _include = [Membro.celular, 
                 Membro.email, 
-                Membro.nome]
+                Membro.nome
+                ]
 
 
 class MembroForm(ModelForm):
@@ -23,12 +24,8 @@ class MembroForm(ModelForm):
     _model_class = Membro
     _include = [Membro.celular, 
                 Membro.email, 
-                Membro.nome]
-
-class SalvarEscravoLinkandoComDono(CreateSingleArc):
-
-    def __init__(self,dono,**params):
-        super(SalvarEscravoLinkandoComDono, self).__init__(MembroLider, dono,  SaveMembroCommand(**params))
+                Membro.nome
+              ]
 
 
 class MembroDetailForm(ModelForm):
