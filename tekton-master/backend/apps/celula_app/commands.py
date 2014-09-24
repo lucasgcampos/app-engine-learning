@@ -12,7 +12,9 @@ class CelulaPublicForm(ModelForm):
     _model_class = Celula
     _include = [Celula.nome, 
                 Celula.data, 
-                Celula.area]
+                Celula.area,
+                Celula.endereco]
+
 
 
 class CelulaForm(ModelForm):
@@ -22,7 +24,8 @@ class CelulaForm(ModelForm):
     _model_class = Celula
     _include = [Celula.nome, 
                 Celula.data, 
-                Celula.area]
+                Celula.area,
+                Celula.endereco]
 
 
 class CelulaDetailForm(ModelForm):
@@ -33,7 +36,8 @@ class CelulaDetailForm(ModelForm):
     _include = [Celula.area, 
                 Celula.creation, 
                 Celula.data, 
-                Celula.nome]
+                Celula.nome,
+                Celula.endereco]
 
 
 class CelulaShortForm(ModelForm):
@@ -44,7 +48,8 @@ class CelulaShortForm(ModelForm):
     _include = [Celula.area, 
                 Celula.creation, 
                 Celula.data, 
-                Celula.nome]
+                Celula.nome,
+                Celula.endereco]
 
 
 class SaveCelulaCommand(SaveCommand):

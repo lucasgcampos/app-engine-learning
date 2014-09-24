@@ -9,4 +9,5 @@ class Celula(Node):
     nome = ndb.StringProperty(required=True)
     data = ndb.DateProperty(required=True)
     area = ndb.IntegerProperty(required=True)
+    endereco = ndb.StringProperty(required=True)
 
