@@ -10,7 +10,6 @@ from gaecookie.decorator import no_csrf
 from membro_app import facade
 from routes.membros import admin
 
-
 @no_csrf
 def index():
     contexto = {'save_path': router.to_path(save), 'celulas' : Celula.query().fetch()}

@@ -8,15 +8,24 @@
                     <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>
                 {% endif %}
                 <hr/>
+
+                <div class="col-lg-offset-8 col-lg-4" style="padding-top: 10px; ">
+                    <select class="form-control">
+                        <option value="a">Fonte de Graça</option>
+                        <option value="a">Seguidores da Palavra</option>
+                    </select>
+                </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading panel-title">{% trans %}<i class="fa fa-list"></i>  Lista of Membros{% endtrans %}</div>
+                    <div class="panel-heading panel-title">
+                        {% trans %}<i class="fa fa-list"></i>  Lista de Membros{% endtrans %}
+                    </div>
+
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>{% trans %}Celular{% endtrans %}</th>
                                 <th>{% trans %}Email{% endtrans %}</th>
                                 <th>{% trans %}Nome{% endtrans %}</th>
-                                <th>{% trans %}Celula{% endtrans %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,7 +34,6 @@
                                     <td>{{ membro.celular }}</td>
                                     <td>{{ membro.email }}</td>
                                     <td>{{ membro.nome }}</td>
-                                    <td>{{ membro.celula }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

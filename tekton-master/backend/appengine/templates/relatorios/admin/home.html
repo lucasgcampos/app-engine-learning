@@ -21,7 +21,6 @@
                         <th>{% trans %}Conteudo{% endtrans %}</th>
                         <th>{% trans %}Data{% endtrans %}</th>
                         <th>{% trans %}Cincoes{% endtrans %}</th>
-                        <th>{% trans %}Celula{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,7 +38,6 @@
                             <td>{{ relatorio.conteudo }}</td>
                             <td>{{ relatorio.data }}</td>
                             <td>{{ relatorio.cincoes }}</td>
-                            <td>{{ relatorio.celula }}</td>
                             <td>
                                 <form action="{{ relatorio.delete_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
                                     {{ csrf_input() }}
