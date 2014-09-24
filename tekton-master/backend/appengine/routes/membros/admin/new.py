@@ -13,8 +13,6 @@ from routes.membros import admin
 
 @no_csrf
 def index():
-
-
     contexto = {'save_path': router.to_path(save), 'celulas' : Celula.query().fetch()}
     return TemplateResponse(contexto,'membros/admin/form.html')
 

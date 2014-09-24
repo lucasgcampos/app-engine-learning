@@ -20,6 +20,14 @@
                         {{ form_input(_('Conteudo'),'conteudo',relatorio.conteudo,errors.conteudo) }}
                         {{ form_input(_('Data'),'data',relatorio.data,errors.data) }}
                         {{ form_input(_('Cincoes'),'cincoes',relatorio.cincoes,errors.cincoes) }}
+                        <div class="form-group ">
+                            <label for="celula" class="control-label">Célula</label>
+                            <select name="celula" class="form-control">
+                                {% for c in celulas %}
+                                    <option value="{{ c.key.id() }}">{{ c.nome }}</option>
+                                {%  endfor %}
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-success">{% trans %}Save{% endtrans %}</button>
                     </form>
                 </div>
