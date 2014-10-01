@@ -26,7 +26,11 @@
                             <label for="celula" class="control-label">Célula</label>
                             <select name="celula" class="form-control">
                                 {% for c in celulas %}
-                                    <option value="{{ c.key.id() }}">{{ c.nome }}</option>
+                                    {% if c.nome == relatorio.celulaNome %}
+                                        <option selected value="{{ c.key.id() }}">{{ c.nome }}</option>
+                                    {% else %}
+                                        <option value="{{ c.key.id() }}">{{ c.nome }}</option>
+                                    {% endif %}
                                 {%  endfor %}
                             </select>
                         </div>
