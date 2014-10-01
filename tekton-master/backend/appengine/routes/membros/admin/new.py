@@ -28,7 +28,8 @@ def save(_handler, celula, **membro_properties):
         membro.put()
     else:
         context = {'errors': erros,
-                   'membro': membro_properties}
+                   'membro': membro_properties,
+                   'celulas' : Celula.query().fetch()}
 
         return TemplateResponse(context, 'membros/admin/form.html')
     _handler.redirect(router.to_path(admin))

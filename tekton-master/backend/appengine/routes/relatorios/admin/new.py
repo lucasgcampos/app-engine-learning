@@ -28,7 +28,8 @@ def save(_handler, celula, **relatorio_properties):
         relatorio.put()
     else:
         context = {'errors': erros,
-                   'relatorio': relatorio_properties}
+                   'relatorio': relatorio_properties,
+                   'celulas' : Celula.query().fetch()}
 
         return TemplateResponse(context, 'relatorios/admin/form.html')
     _handler.redirect(router.to_path(admin))
