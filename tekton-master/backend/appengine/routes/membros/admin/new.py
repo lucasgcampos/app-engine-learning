@@ -10,7 +10,6 @@ from gaecookie.decorator import no_csrf
 from membro_app import facade
 from routes.membros import admin
 
-
 @no_csrf
 def index():
     contexto = {'save_path': router.to_path(save), 'celulas' : Celula.query().fetch()}
@@ -21,13 +20,16 @@ def save(_handler, celula, **membro_properties):
     form = facade.membro_short_form(**membro_properties)
     erros=form.validate()
     if not erros:
-        dct=form.normalize()
         celula_key=ndb.Key(Celula,int(celula))
+        obj_celula = Celula._get_by_id(int(celula))
+        dct=form.normalize()
+        dct['celulaNome'] = obj_celula.nome
         membro=Membro(celula=celula_key,**dct)
         membro.put()
     else:
         context = {'errors': erros,
-                   'membro': membro_properties}
+                   'membro': membro_properties,
+                   'celulas' : Celula.query().fetch()}
 
         return TemplateResponse(context, 'membros/admin/form.html')
     _handler.redirect(router.to_path(admin))

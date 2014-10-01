@@ -22,11 +22,14 @@ def save(_handler, celula, **relatorio_properties):
     if not erros:
         dct=form.normalize()
         celula_key=ndb.Key(Celula,int(celula))
+        obj_celula = Celula._get_by_id(int(celula))
+        dct['celulaNome'] = obj_celula.nome
         relatorio=Relatorio(celula=celula_key,**dct)
         relatorio.put()
     else:
         context = {'errors': erros,
-                   'relatorio': relatorio_properties}
+                   'relatorio': relatorio_properties,
+                   'celulas' : Celula.query().fetch()}
 
         return TemplateResponse(context, 'relatorios/admin/form.html')
     _handler.redirect(router.to_path(admin))

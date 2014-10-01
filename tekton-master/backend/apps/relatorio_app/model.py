@@ -17,3 +17,4 @@ class Relatorio(Node):
     observacao = ndb.StringProperty(required=True)
     data = ndb.DateProperty(required=True)
     celula = ndb.KeyProperty(Celula, required=True)
+    celulaNome = ndb.StringProperty()

@@ -12,6 +12,7 @@ def delete(_handler, membro_id):
     _handler.redirect(router.to_path(index))
 
 
+
 @no_csrf
 def index():
     cmd = facade.list_membros_cmd()

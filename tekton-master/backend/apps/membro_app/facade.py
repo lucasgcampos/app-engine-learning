@@ -2,8 +2,18 @@
 from __future__ import absolute_import, unicode_literals
 from gaegraph.business_base import NodeSearch, DeleteNode
 from membro_app.commands import ListMembroCommand, SaveMembroCommand, UpdateMembroCommand, \
-    MembroPublicForm, MembroDetailForm, MembroShortForm
+    MembroPublicForm, MembroDetailForm, MembroShortForm, ListMembroDeCelula
 
+#here
+def list_membros_de_celula(celula):
+    """
+    Método que retornar comando que lista escravos de um dono ordenados
+    por data criação
+    :param dono: Dono (Usuário) ou um comando que retorne um usuário como resultado
+    :return: Comando que retorna lista de escravos como resultado
+
+    """
+    return ListMembroDeCelula(celula)
 
 def save_membro_cmd(**membro_properties):
     """
