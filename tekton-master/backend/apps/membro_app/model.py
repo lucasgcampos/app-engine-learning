@@ -12,4 +12,5 @@ class Membro(Node):
     celular = ndb.StringProperty(required=True)
     email = ndb.StringProperty(required=True)
     celula = ndb.KeyProperty(Celula, required=True)
+    celulaNome = ndb.StringProperty()
 

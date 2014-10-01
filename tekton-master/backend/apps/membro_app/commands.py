@@ -2,8 +2,17 @@
 from __future__ import absolute_import, unicode_literals
 from gaebusiness.gaeutil import SaveCommand, ModelSearchCommand
 from gaeforms.ndb.form import ModelForm
-from gaegraph.business_base import UpdateNode, CreateSingleArc
+from gaegraph.business_base import UpdateNode, DestinationsSearch
 from membro_app.model import Membro
+
+#here
+class ListMembroDeCelula(DestinationsSearch):
+    def __init__(self, celula):
+        super(ListMembroDeCelula, self).__init__(celula)
+
+    def do_business(self):
+        super(ListMembroDeCelula, self).do_business()
+        self.result = [e for e in self.result if e != None]
 
 
 class MembroPublicForm(ModelForm):
@@ -13,8 +22,8 @@ class MembroPublicForm(ModelForm):
     _model_class = Membro
     _include = [Membro.celular, 
                 Membro.email, 
-                Membro.nome
-                ]
+                Membro.nome,
+                Membro.celulaNome]
 
 
 class MembroForm(ModelForm):
@@ -24,8 +33,8 @@ class MembroForm(ModelForm):
     _model_class = Membro
     _include = [Membro.celular, 
                 Membro.email, 
-                Membro.nome
-              ]
+                Membro.nome,
+                Membro.celulaNome]
 
 
 class MembroDetailForm(ModelForm):
@@ -36,7 +45,8 @@ class MembroDetailForm(ModelForm):
     _include = [Membro.nome, 
                 Membro.creation, 
                 Membro.email, 
-                Membro.celular]
+                Membro.celular,
+                Membro.celulaNome]
 
 
 class MembroShortForm(ModelForm):
@@ -47,7 +57,8 @@ class MembroShortForm(ModelForm):
     _include = [Membro.nome, 
                 Membro.creation, 
                 Membro.email, 
-                Membro.celular]
+                Membro.celular,
+                Membro.celulaNome]
 
 
 class SaveMembroCommand(SaveCommand):

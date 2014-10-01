@@ -20,8 +20,10 @@ def save(_handler, celula, **membro_properties):
     form = facade.membro_short_form(**membro_properties)
     erros=form.validate()
     if not erros:
-        dct=form.normalize()
         celula_key=ndb.Key(Celula,int(celula))
+        obj_celula = Celula._get_by_id(int(celula))
+        dct=form.normalize()
+        dct['celulaNome'] = obj_celula.nome
         membro=Membro(celula=celula_key,**dct)
         membro.put()
     else:

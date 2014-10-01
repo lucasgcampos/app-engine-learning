@@ -8,18 +8,20 @@
                 <br/>
 
                 <div class="well">
-                    <h1 class="text-center">{% trans %}Relatorio Form{% endtrans %}</h1>
+                    <h1 class="text-center">{% trans %}Formulário de Relatório{% endtrans %}</h1>
 
                     <form action="{{ save_path }}" method="post" role="form">
                         {{ csrf_input() }}
-                        {{ form_input(_('Participacao'),'participacao',relatorio.participacao,errors.participacao) }}
-                        {{ form_input(_('Geral'),'geral',relatorio.geral,errors.geral) }}
-                        {{ form_input(_('Observacao'),'observacao',relatorio.observacao,errors.observacao) }}
-                        {{ form_input(_('Horario'),'horario',relatorio.horario,errors.horario) }}
+                        {{ form_input(_('Participacao [0-5]'),'participacao',relatorio.participacao,errors.participacao) }}
+                        {{ form_input(_('Geral [0-5]'),'geral',relatorio.geral,errors.geral) }}
+                        {{ form_input(_('Horario [0-5]'),'horario',relatorio.horario,errors.horario) }}
+                        {{ form_input(_('Conteudo [0-5]'),'conteudo',relatorio.conteudo,errors.conteudo) }}
+                        {{ form_input(_('Cincoes  [0-5]'),'cincoes',relatorio.cincoes,errors.cincoes) }}
+
+                        {{ form_input(_('Observacao '),'observacao',relatorio.observacao,errors.observacao) }}
                         {{ form_input(_('Tema'),'tema',relatorio.tema,errors.tema) }}
-                        {{ form_input(_('Conteudo'),'conteudo',relatorio.conteudo,errors.conteudo) }}
                         {{ form_input(_('Data'),'data',relatorio.data,errors.data) }}
-                        {{ form_input(_('Cincoes'),'cincoes',relatorio.cincoes,errors.cincoes) }}
+
                         <div class="form-group ">
                             <label for="celula" class="control-label">Célula</label>
                             <select name="celula" class="form-control">

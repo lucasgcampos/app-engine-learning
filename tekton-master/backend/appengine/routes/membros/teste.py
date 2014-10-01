@@ -10,8 +10,8 @@ from routes.membros import admin
 
 @login_not_required
 @no_csrf
-def index():
-    cmd = facade.list_membros_cmd()
+def index(_req):
+    cmd = facade.list_membros_cmd() #'6119881720201216'
     membros = cmd()
     public_form = facade.membro_public_form()
     membro_public_dcts = [public_form.fill_with_model(membro) for membro in membros]

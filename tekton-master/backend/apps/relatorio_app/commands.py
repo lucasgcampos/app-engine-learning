@@ -17,7 +17,8 @@ class RelatorioPublicForm(ModelForm):
                 Relatorio.tema, 
                 Relatorio.conteudo, 
                 Relatorio.data, 
-                Relatorio.cincoes]
+                Relatorio.cincoes,
+                Relatorio.celulaNome]
 
 
 class RelatorioForm(ModelForm):
@@ -32,7 +33,8 @@ class RelatorioForm(ModelForm):
                 Relatorio.tema, 
                 Relatorio.conteudo, 
                 Relatorio.data, 
-                Relatorio.cincoes]
+                Relatorio.cincoes,
+                Relatorio.celulaNome]
 
 
 class RelatorioDetailForm(ModelForm):
@@ -48,7 +50,8 @@ class RelatorioDetailForm(ModelForm):
                 Relatorio.tema, 
                 Relatorio.conteudo, 
                 Relatorio.geral, 
-                Relatorio.cincoes]
+                Relatorio.cincoes,
+                Relatorio.celulaNome]
 
 
 class RelatorioShortForm(ModelForm):
@@ -64,7 +67,8 @@ class RelatorioShortForm(ModelForm):
                 Relatorio.tema, 
                 Relatorio.conteudo, 
                 Relatorio.geral, 
-                Relatorio.cincoes]
+                Relatorio.cincoes,
+                Relatorio.celulaNome]
 
 
 class SaveRelatorioCommand(SaveCommand):

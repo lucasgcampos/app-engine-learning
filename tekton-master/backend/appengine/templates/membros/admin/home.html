@@ -13,9 +13,10 @@
                         <th/>
                         <th>{% trans %}Id{% endtrans %}</th>
                         <th>{% trans %}Creation{% endtrans %}</th>
+                        <th>{% trans %}Nome{% endtrans %}</th>
                         <th>{% trans %}Celular{% endtrans %}</th>
                         <th>{% trans %}Email{% endtrans %}</th>
-                        <th>{% trans %}Nome{% endtrans %}</th>
+                        <th>{% trans %}Célula{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -25,9 +26,10 @@
                                     class="glyphicon glyphicon-pencil"></i></a></td>
                             <td>{{ membro.id }}</td>
                             <td>{{ membro.creation }}</td>
+                            <td>{{ membro.nome }}</td>
                             <td>{{ membro.celular }}</td>
                             <td>{{ membro.email }}</td>
-                            <td>{{ membro.nome }}</td>
+                            <td>{{ membro.celulaNome }}</td>
                             <td>
                                 <form action="{{ membro.delete_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
                                     {{ csrf_input() }}
