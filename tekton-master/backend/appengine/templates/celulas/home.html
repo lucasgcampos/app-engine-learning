@@ -14,7 +14,6 @@
                         <thead>
                         <tr>
                             <th>{% trans %}Nome{% endtrans %}</th>
-                            <th>{% trans %}Data{% endtrans %}</th>
                             <th>{% trans %}Area{% endtrans %}</th>
                             <th>{% trans %}Endereço{% endtrans %}</th>
                         </tr>
@@ -23,7 +22,6 @@
                         {% for celula in celulas %}
                             <tr>
                                 <td>{{ celula.nome }}</td>
-                                <td>{{ celula.data }}</td>
                                 <td>{{ celula.area }}</td>
                                 <td>{{ celula.endereco }}</td>
                             </tr>
