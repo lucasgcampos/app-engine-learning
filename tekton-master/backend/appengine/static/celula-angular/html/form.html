@@ -1,0 +1,27 @@
+<form  class="well" ng-submit="salvar()" >
+    <h1 class="text-center">Formulário de Célula</h1>
+
+    <div role="form">
+        <div id="tituloDiv" class="form-group"
+             ng-class="{true:'has-error',false:''}[erros.nome!=null]">
+            <label for="nome" class="control-label">Nome </label>
+            <input id="nome" type="text" class="form-control" ng-model="celula.nome">
+            <span id="help-nome" class="help-block">{{ erros.nome }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':erros.area!=null}">
+            <label for="area" class="control-label">Área </label>
+            <input id="area" type="text" class="form-control" ng-model="celula.area">
+            <span id="help-area" class="help-block">{{ erros.area }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{true:'has-error',false:''}[erros.endereco!=null]">
+            <label for="endereco" class="control-label">Endereço </label>
+            <input id="endereco" type="text" class="form-control" ng-model="celula.endereco">
+            <span id="help-endereco" class="help-block">{{ erros.endereco }}</span>
+        </div>
+
+        <button type="submit" class="btn btn-success" >Salvar</button>
+        <img ng-show="executandoSalvamento" src="/static/img/ajax.gif" >
+    </div>
+</form>

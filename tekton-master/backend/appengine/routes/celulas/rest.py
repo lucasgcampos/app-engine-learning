@@ -14,7 +14,7 @@ def index():
     celula_list = cmd()
     short_form=facade.celula_short_form()
     celula_short = [short_form.fill_with_model(m) for m in celula_list]
-    return JsonUnsecureResponse(celula_short)
+    return JsonResponse(celula_short)
 
 @login_not_required
 @no_csrf
@@ -48,5 +48,5 @@ def _save_or_update_json_response(_resp, cmd):
         _resp.status_code = 500;
         return JsonUnsecureResponse(cmd.errors)
     short_form = facade.celula_short_form()
-    return JsonUnsecureResponse(short_form.fill_with_model(celula))
+    return JsonResponse(short_form.fill_with_model(celula))
 

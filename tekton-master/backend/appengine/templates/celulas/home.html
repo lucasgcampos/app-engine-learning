@@ -1,34 +1,106 @@
-{% extends 'layout/padrao.html' %}
-{% block conteudo %}
+{#{% extends 'layout/padrao.html' %}#}
+{#{% block conteudo %}#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col-md-10">#}
+{#                <h1>{% trans %}Células {% endtrans %}  </h1>#}
+{#                {% if _logged_user and ('ADMIN' in _logged_user.groups) %}#}
+{#                <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>#}
+{#                {% endif %}#}
+{#                <hr/>#}
+{#                <div class="panel panel-default">#}
+{#                    <div class="panel-heading panel-title">{% trans %}<i class="fa fa-list"></i>  Lista of Celulas{% endtrans %}</div>#}
+{#                    <table class="table table-hover">#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <th>{% trans %}Nome{% endtrans %}</th>#}
+{#                            <th>{% trans %}Area{% endtrans %}</th>#}
+{#                            <th>{% trans %}Endereço{% endtrans %}</th>#}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        {% for celula in celulas %}#}
+{#                            <tr>#}
+{#                                <td>{{ celula.nome }}</td>#}
+{#                                <td>{{ celula.area }}</td>#}
+{#                                <td>{{ celula.endereco }}</td>#}
+{#                            </tr>#}
+{#                        {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{% extends 'celulas/base.html' %}
+{% block js %}
+    <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/celula-angular/js/celula.js"></script>
+    <script type="text/javascript">
+        var celulaServico = angular.module('celula-servico', []);
+        celulaServico.factory('CelulaAPI', function ($http) {
+            return {
+                salvar: function (celula) {
+                    console.log('fez a chamada para salvar');
+                    return $http.post('{{ salvar_path }}', celula);
+                },
+                listar: function () {
+                    return $http.post('{{ listar_path }}');
+                },
+                deletar: function (id) {
+
+                    return $http.post('{{ deletar_path }}', {'celula_id': id});
+                }
+            }
+        });
+        function CelulaControlador($scope, CelulaAPI) {
+            $scope.mostrarFormFlag = false;
+            $scope.celulas = [];
+            CelulaAPI.listar().success(function (celulas) {
+                $scope.celulas = celulas;
+            });
+            $scope.mostrarOuEsconderForm = function () {
+                $scope.mostrarFormFlag = !$scope.mostrarFormFlag;
+            };
+            $scope.adicionarCelula = function (celula) {
+                $scope.celulas.unshift(celula);
+            };
+            $scope.deletarCelula = function (index) {
+                $scope.celulas.splice(index,1);
+            };
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
-                <h1>{% trans %}Células {% endtrans %}  </h1>
-                {% if _logged_user and ('ADMIN' in _logged_user.groups) %}
-                <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>
-                {% endif %}
-                <hr/>
-                <div class="panel panel-default">
-                    <div class="panel-heading panel-title">{% trans %}<i class="fa fa-list"></i>  Lista of Celulas{% endtrans %}</div>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>{% trans %}Nome{% endtrans %}</th>
-                            <th>{% trans %}Area{% endtrans %}</th>
-                            <th>{% trans %}Endereço{% endtrans %}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for celula in celulas %}
-                            <tr>
-                                <td>{{ celula.nome }}</td>
-                                <td>{{ celula.area }}</td>
-                                <td>{{ celula.endereco }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+            <div class="col-md-10" ng-app="celula-modulo" ng-controller="CelulaControlador">
+
+                <h1>{% trans %}This is a generic home for celula_app {% endtrans %}  </h1>
+                <button class="btn btn-success" ng-click="mostrarOuEsconderForm()">Criar Nova Célula</button>
+                <p></p>
+                <div>
+                    <celula-form ng-show="mostrarFormFlag" celula-salva="adicionarCelula(celula)"></celula-form>
                 </div>
+                <hr/>
+                <h2>{% trans %}Lista de Células{% endtrans %}</h2>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>{% trans %}Nome{% endtrans %}</th>
+                        <th>{% trans %}Área{% endtrans %}</th>
+                        <th>{% trans %}Endereço{% endtrans %}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="c in celulas" celula-linha celula="c" celula-deletada="deletarCelula($index)"></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
