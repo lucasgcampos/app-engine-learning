@@ -30,6 +30,7 @@
                 $scope.mostrarFormFlag = !$scope.mostrarFormFlag;
             };
             $scope.adicionarCelula = function (celula) {
+                $scope.mostrarFormFlag = false;
                 $scope.celulas.unshift(celula);
             };
             $scope.deletarCelula = function (index) {

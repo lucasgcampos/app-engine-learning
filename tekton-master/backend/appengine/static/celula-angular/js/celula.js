@@ -6,7 +6,7 @@ celulaModulo.directive('celulaForm', [function() {
         templateUrl: '/static/celula-angular/html/form.html',
         scope: {celulaSalva: '&'},
         controller : function($scope, CelulaAPI) {
-            $scope.celula = {nome: 'nome', endereco: 'endereco'}
+            $scope.celula = {}
             $scope.executandoSalvamento = false;
             $scope.erros = {};
 
@@ -20,6 +20,7 @@ celulaModulo.directive('celulaForm', [function() {
                     $scope.executandoSalvamento = false;
                     if($scope.celulaSalva != null) {
                         $scope.celulaSalva({'celula': celula})
+                        $scope.celula = {};
                     }
                 });
 
