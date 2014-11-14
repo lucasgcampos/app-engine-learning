@@ -1,16 +1,20 @@
 <tr>
     <td>
-        <button class="btn btn-success" ng-disabled="apagandoFlag" ng-click="editar()">
+        <button class="btn btn-success" ng-hide="editandoFlag" ng-click="editar()">
             <i class="glyphicon glyphicon-pencil"></i>
         </button>
-{#        <img ng-show="apagandoFlag" src="/static/img/ajax.gif" >#}
+        <button class="btn btn-primary" ng-show="editandoFlag" ng-click="salvarEdicao()">
+            <i class="glyphicon glyphicon-floppy-save"></i>
+        </button>
+        <button class="btn btn-danger" ng-show="editandoFlag" ng-click="cancelar()">
+            <i class="glyphicon glyphicon-remove"></i>
+        </button>
     </td>
-    <td>{{ celula.nome }}</td>
-    <td>{{ celula.area }}</td>
-    <td>{{ celula.endereco }}</td>
+    <td><span ng-hide="editandoFlag">{{ celula.nome }}</span> <input ng-show="editandoFlag" ng-model="celulaEdit.nome"> </td>
+    <td><span ng-hide="editandoFlag">{{ celula.area }}</span> <input ng-show="editandoFlag" ng-model="celulaEdit.area"> </td>
+    <td><span ng-hide="editandoFlag">{{ celula.endereco }}</span> <input ng-show="editandoFlag" ng-model="celulaEdit.endereco"> </td>
     <td>
-        <button class="btn btn-danger" ng-disabled="apagandoFlag"
-                ng-click="deletar()">
+        <button class="btn btn-danger" ng-disabled="apagandoFlag" ng-click="deletar()">
             <i class="glyphicon glyphicon-trash"></i>
         </button>
         <img ng-show="apagandoFlag" src="/static/img/ajax.gif" >

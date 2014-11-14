@@ -1,39 +1,3 @@
-{#{% extends 'layout/padrao.html' %}#}
-{#{% block conteudo %}#}
-{#    <div class="container">#}
-{#        <div class="row">#}
-{#            <div class="col-md-10">#}
-{#                <h1>{% trans %}Células {% endtrans %}  </h1>#}
-{#                {% if _logged_user and ('ADMIN' in _logged_user.groups) %}#}
-{#                <a href="{{ admin_path }}" class="btn btn-success">{% trans %}Admin{% endtrans %}</a>#}
-{#                {% endif %}#}
-{#                <hr/>#}
-{#                <div class="panel panel-default">#}
-{#                    <div class="panel-heading panel-title">{% trans %}<i class="fa fa-list"></i>  Lista of Celulas{% endtrans %}</div>#}
-{#                    <table class="table table-hover">#}
-{#                        <thead>#}
-{#                        <tr>#}
-{#                            <th>{% trans %}Nome{% endtrans %}</th>#}
-{#                            <th>{% trans %}Area{% endtrans %}</th>#}
-{#                            <th>{% trans %}Endereço{% endtrans %}</th>#}
-{#                        </tr>#}
-{#                        </thead>#}
-{#                        <tbody>#}
-{#                        {% for celula in celulas %}#}
-{#                            <tr>#}
-{#                                <td>{{ celula.nome }}</td>#}
-{#                                <td>{{ celula.area }}</td>#}
-{#                                <td>{{ celula.endereco }}</td>#}
-{#                            </tr>#}
-{#                        {% endfor %}#}
-{#                        </tbody>#}
-{#                    </table>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#{% endblock %}#}
-
 {% extends 'celulas/base.html' %}
 {% block js %}
     <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
@@ -43,15 +7,16 @@
         celulaServico.factory('CelulaAPI', function ($http) {
             return {
                 salvar: function (celula) {
-                    console.log('fez a chamada para salvar');
                     return $http.post('{{ salvar_path }}', celula);
                 },
                 listar: function () {
                     return $http.post('{{ listar_path }}');
                 },
                 deletar: function (id) {
-
                     return $http.post('{{ deletar_path }}', {'celula_id': id});
+                },
+                editar: function(celula) {
+                    return $http.post('{{ editar_path }}', {'celula_id': celula.id, nome: celula.nome, area: celula.area, endereco: celula.endereco});
                 }
             }
         });

@@ -27,7 +27,7 @@ celulaModulo.directive('celulaForm', [function() {
                     $scope.executandoSalvamento = false;
                     $scope.erros = erros;
                 });
-            }
+            };
         }
     };
 }]);
@@ -43,6 +43,9 @@ celulaModulo.directive('celulaLinha', [function() {
         },
         controller: function($scope, CelulaAPI) {
             $scope.apagandoFlag = false;
+            $scope.editandoFlag = false;
+
+            $scope.celulaEdit = {};
 
             $scope.deletar = function() {
                 $scope.apagandoFlag = true;
@@ -52,7 +55,27 @@ celulaModulo.directive('celulaLinha', [function() {
                         $scope.celulaDeletada();
                     }
                 })
-            }
+            };
+
+            $scope.editar = function() {
+                $scope.editandoFlag = true;
+                $scope.celulaEdit.id = $scope.celula.id;
+                $scope.celulaEdit.nome = $scope.celula.nome;
+                $scope.celulaEdit.area = $scope.celula.area;
+                $scope.celulaEdit.endereco = $scope.celula.endereco;
+            };
+
+            $scope.cancelar = function() {
+                $scope.editandoFlag = false;
+            };
+
+            $scope.salvarEdicao = function() {
+                CelulaAPI.editar($scope.celulaEdit).success(function(celula) {
+                    $scope.celula = celula;
+                    $scope.editandoFlag = false
+                });
+            };
+
         }
     };
 }]);
