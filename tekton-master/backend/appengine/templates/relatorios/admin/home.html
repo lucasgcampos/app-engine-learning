@@ -1,0 +1,57 @@
+{% extends 'relatorios/base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{% trans %}Relatórios{% endtrans %}  </h1>
+                <a href="{{ new_path }}" class="btn btn-success">{% trans %}Criar Novo Relatório{% endtrans %}</a>
+                <hr/>
+                <h2>{% trans %}Lista de Relatórios{% endtrans %}</h2>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th/>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Creation{% endtrans %}</th>
+                        <th>{% trans %}Participacao{% endtrans %}</th>
+                        <th>{% trans %}Geral{% endtrans %}</th>
+                        <th>{% trans %}Observacao{% endtrans %}</th>
+                        <th>{% trans %}Horario{% endtrans %}</th>
+                        <th>{% trans %}Tema{% endtrans %}</th>
+                        <th>{% trans %}Conteudo{% endtrans %}</th>
+                        <th>{% trans %}Data{% endtrans %}</th>
+                        <th>{% trans %}Cincoes{% endtrans %}</th>
+                        <th>{% trans %}Célula{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for relatorio in relatorios %}
+                        <tr>
+                            <td><a href="{{ relatorio.edit_path }}" class="btn btn-success btn-sm"><i
+                                    class="glyphicon glyphicon-pencil"></i></a></td>
+                            <td>{{ relatorio.id }}</td>
+                            <td>{{ relatorio.creation }}</td>
+                            <td>{{ relatorio.participacao }}</td>
+                            <td>{{ relatorio.geral }}</td>
+                            <td>{{ relatorio.observacao }}</td>
+                            <td>{{ relatorio.horario }}</td>
+                            <td>{{ relatorio.tema }}</td>
+                            <td>{{ relatorio.conteudo }}</td>
+                            <td>{{ relatorio.data }}</td>
+                            <td>{{ relatorio.cincoes }}</td>
+                            <td>{{ relatorio.celulaNome }}</td>
+                            <td>
+                                <form action="{{ relatorio.delete_path }}" method="post" onsubmit="return confirm('{{_('Are you sure to delete? Press cancel to avoid deletion.')}}');">
+                                    {{ csrf_input() }}
+                                    <button class="btn btn-danger btn-sm"><i
+                                            class="glyphicon glyphicon-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

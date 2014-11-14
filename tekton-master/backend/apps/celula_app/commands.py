@@ -10,9 +10,10 @@ class CelulaPublicForm(ModelForm):
     Form used to show properties on app's home
     """
     _model_class = Celula
-    _include = [Celula.nome, 
-                Celula.data, 
-                Celula.area]
+    _include = [Celula.nome,
+                Celula.area,
+                Celula.endereco]
+
 
 
 class CelulaForm(ModelForm):
@@ -20,9 +21,9 @@ class CelulaForm(ModelForm):
     Form used to save and update operations on app's admin page
     """
     _model_class = Celula
-    _include = [Celula.nome, 
-                Celula.data, 
-                Celula.area]
+    _include = [Celula.nome,
+                Celula.area,
+                Celula.endereco]
 
 
 class CelulaDetailForm(ModelForm):
@@ -31,9 +32,9 @@ class CelulaDetailForm(ModelForm):
     """
     _model_class = Celula
     _include = [Celula.area, 
-                Celula.creation, 
-                Celula.data, 
-                Celula.nome]
+                Celula.creation,
+                Celula.nome,
+                Celula.endereco]
 
 
 class CelulaShortForm(ModelForm):
@@ -42,9 +43,9 @@ class CelulaShortForm(ModelForm):
     """
     _model_class = Celula
     _include = [Celula.area, 
-                Celula.creation, 
-                Celula.data, 
-                Celula.nome]
+                Celula.creation,
+                Celula.nome,
+                Celula.endereco]
 
 
 class SaveCelulaCommand(SaveCommand):
